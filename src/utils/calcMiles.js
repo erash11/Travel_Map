@@ -1,5 +1,7 @@
 import { haversine } from './haversine.js';
 
+// awayDests must be the UNFILTERED away destination list — filtering drops trip stops
+// and causes silent mileage undercounting. Always pass the full season list.
 export function calcTotalMiles(awayDests, trips, home) {
   let total = 0;
   const tripsProcessed = new Set();

@@ -13,6 +13,7 @@ export function groupByDest(games) {
       };
     }
     map[key].games.push(g);
+    // Assumes a given lat/lng belongs to at most one trip — invariant held by data authoring.
     if (g.tripId) map[key].tripId = g.tripId;
   });
   return Object.values(map);
