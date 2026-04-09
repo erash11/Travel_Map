@@ -4,7 +4,13 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-Single-file React/D3 application visualizing travel demands for the 2026 Baylor Softball season. No build system, no package manager, no test framework.
+**Current state:** Single-file React/D3 application visualizing travel demands for the 2026 Baylor Softball season. No build system, no package manager, no test framework.
+
+**Planned next:** Multi-sport hosted web app (Vite + React SPA). See `docs/superpowers/specs/2026-04-09-multi-sport-travel-map-design.md` for the full spec. Key decisions:
+- **Approach B** — Vite + React SPA with per-sport JSON data files. Adding a sport = drop in one JSON file.
+- **Approach C is the roadmap goal** — future drag-and-drop CSV/JSON upload so staff can update schedules without touching code.
+- The `swing` field on games becomes `tripId`; `TRIP_SWINGS` becomes `trips` in the JSON schema.
+- New features: time zone overlay on map, time zone crossing summary, travel mode arc styles (flight/bus/charter), congestion flagging (auto-detected via sliding window).
 
 ## How to Run / Develop
 
