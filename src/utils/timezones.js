@@ -69,20 +69,20 @@ export const FIPS_TIMEZONES = {
   '56': 'Mountain',  // Wyoming
 };
 
-// rgba fill colors for SVG state tints — applied over the dark base fill
+// rgba fill colors for SVG state tints — applied over the light base fill
 export const TZ_FILL_COLORS = {
-  Pacific:  'rgba(99, 179, 237, 0.12)',
-  Mountain: 'rgba(154, 230, 180, 0.12)',
-  Central:  'rgba(252, 211, 77, 0.10)',
-  Eastern:  'rgba(245, 101, 101, 0.12)',
+  Pacific:  'rgba(59, 130, 246, 0.18)',
+  Mountain: 'rgba(34, 197, 94, 0.18)',
+  Central:  'rgba(234, 179, 8, 0.16)',
+  Eastern:  'rgba(239, 68, 68, 0.18)',
 };
 
-// Colors for floating zone label text
+// Colors for floating zone label text and sidebar dots
 export const TZ_LABEL_COLORS = {
-  Pacific:  'rgba(99, 179, 237, 0.70)',
-  Mountain: 'rgba(154, 230, 180, 0.70)',
-  Central:  'rgba(252, 211, 77, 0.70)',
-  Eastern:  'rgba(245, 101, 101, 0.70)',
+  Pacific:  '#2563eb',
+  Mountain: '#16a34a',
+  Central:  '#d97706',
+  Eastern:  '#dc2626',
 };
 
 // Short display abbreviations

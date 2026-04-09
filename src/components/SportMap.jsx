@@ -81,10 +81,10 @@ export default function SportMap({ sport, onBack }) {
     });
   }, [destinations]);
 
-  const resultColor = r => r?.startsWith('W') ? '#4ade80' : r?.startsWith('L') ? '#f87171' : '#64748b';
+  const resultColor = r => r?.startsWith('W') ? '#16a34a' : r?.startsWith('L') ? '#dc2626' : '#94a3b8';
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', height: '100vh', background: '#0f172a', fontFamily: 'DM Sans, sans-serif', color: '#fff', overflow: 'hidden' }}>
+    <div style={{ display: 'flex', flexDirection: 'column', height: '100vh', background: '#f1f5f9', fontFamily: 'DM Sans, sans-serif', color: '#0f172a', overflow: 'hidden' }}>
       {/* Header */}
       <div style={{ background: '#154734', padding: '12px 20px', display: 'flex', alignItems: 'center', gap: 16, flexShrink: 0 }}>
         <button
@@ -118,9 +118,9 @@ export default function SportMap({ sport, onBack }) {
         <button
           onClick={() => setShowTimezones(v => !v)}
           style={{
-            background: showTimezones ? 'rgba(99,179,237,0.2)' : 'rgba(255,255,255,0.08)',
-            border: `1px solid ${showTimezones ? 'rgba(99,179,237,0.5)' : 'rgba(255,255,255,0.2)'}`,
-            color: showTimezones ? 'rgba(99,179,237,0.9)' : '#64748b',
+            background: showTimezones ? 'rgba(37,99,235,0.12)' : 'rgba(255,255,255,0.15)',
+            border: `1px solid ${showTimezones ? 'rgba(37,99,235,0.4)' : 'rgba(255,255,255,0.3)'}`,
+            color: showTimezones ? '#93c5fd' : 'rgba(255,255,255,0.6)',
             borderRadius: 4, padding: '5px 10px', cursor: 'pointer', fontSize: 12,
           }}
         >
@@ -141,7 +141,7 @@ export default function SportMap({ sport, onBack }) {
         />
 
         {/* Sidebar */}
-        <div style={{ width: 300, background: '#0c1420', borderLeft: '1px solid #1e293b', display: 'flex', flexDirection: 'column', overflow: 'hidden', flexShrink: 0 }}>
+        <div style={{ width: 300, background: '#ffffff', borderLeft: '1px solid #e2e8f0', display: 'flex', flexDirection: 'column', overflow: 'hidden', flexShrink: 0 }}>
           {/* Stat cards */}
           <div style={{ padding: 16, display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 8, flexShrink: 0 }}>
             {[
@@ -150,24 +150,24 @@ export default function SportMap({ sport, onBack }) {
               { label: 'Home Games', value: homeGames,              sub: 'at Waco' },
               { label: 'Conf. Games', value: confGames,             sub: 'Big 12' },
             ].map(({ label, value, sub }) => (
-              <div key={label} style={{ background: '#1e293b', borderRadius: 6, padding: '10px 12px' }}>
-                <div style={{ fontSize: 10, color: '#64748b', textTransform: 'uppercase', letterSpacing: '0.06em', marginBottom: 4, display: 'flex', alignItems: 'center', gap: 4 }}>
+              <div key={label} style={{ background: '#f8fafc', border: '1px solid #e2e8f0', borderRadius: 6, padding: '10px 12px' }}>
+                <div style={{ fontSize: 10, color: '#94a3b8', textTransform: 'uppercase', letterSpacing: '0.06em', marginBottom: 4, display: 'flex', alignItems: 'center', gap: 4 }}>
                   {label}
                   {label === 'Away Trips' && congestionPeriods.length > 0 && (
                     <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#f97316', display: 'inline-block' }} title="High load periods detected" />
                   )}
                 </div>
                 <div style={{ fontSize: 22, fontWeight: 700, fontFamily: 'JetBrains Mono, monospace', color: colors.conference }}>{value}</div>
-                <div style={{ fontSize: 10, color: '#475569' }}>{sub}</div>
+                <div style={{ fontSize: 10, color: '#94a3b8' }}>{sub}</div>
               </div>
             ))}
           </div>
 
           {/* Farthest trip */}
           {farthestDest && (
-            <div style={{ margin: '0 16px 12px', background: '#1e293b', borderRadius: 6, padding: '10px 12px', borderLeft: `3px solid ${colors.nonConference}` }}>
-              <div style={{ fontSize: 10, color: '#64748b', textTransform: 'uppercase', letterSpacing: '0.06em', marginBottom: 2 }}>Farthest Trip</div>
-              <div style={{ fontWeight: 600, fontSize: 13 }}>{farthestDest.location}</div>
+            <div style={{ margin: '0 16px 12px', background: '#f8fafc', border: '1px solid #e2e8f0', borderRadius: 6, padding: '10px 12px', borderLeft: `3px solid ${colors.nonConference}` }}>
+              <div style={{ fontSize: 10, color: '#94a3b8', textTransform: 'uppercase', letterSpacing: '0.06em', marginBottom: 2 }}>Farthest Trip</div>
+              <div style={{ fontWeight: 600, fontSize: 13, color: '#0f172a' }}>{farthestDest.location}</div>
               <div style={{ fontSize: 11, color: colors.nonConference, fontFamily: 'JetBrains Mono, monospace' }}>
                 {Math.round(farthestDest.mi).toLocaleString()} mi one-way
               </div>
@@ -176,12 +176,12 @@ export default function SportMap({ sport, onBack }) {
 
           {/* Time Zone Changes */}
           {totalCrossings > 0 && (
-            <div style={{ margin: '0 16px 12px', background: '#1e293b', borderRadius: 6, padding: '10px 12px' }}>
+            <div style={{ margin: '0 16px 12px', background: '#f8fafc', border: '1px solid #e2e8f0', borderRadius: 6, padding: '10px 12px' }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 8 }}>
-                <div style={{ fontSize: 10, color: '#64748b', textTransform: 'uppercase', letterSpacing: '0.06em' }}>
+                <div style={{ fontSize: 10, color: '#94a3b8', textTransform: 'uppercase', letterSpacing: '0.06em' }}>
                   Time Zone Changes
                 </div>
-                <div style={{ fontSize: 11, color: '#64748b', fontFamily: 'JetBrains Mono, monospace' }}>
+                <div style={{ fontSize: 11, color: '#94a3b8', fontFamily: 'JetBrains Mono, monospace' }}>
                   {totalCrossings} crossing{totalCrossings !== 1 ? 's' : ''}
                 </div>
               </div>
@@ -192,14 +192,14 @@ export default function SportMap({ sport, onBack }) {
                     const first = tzChanges[zone][0];
                     if (first) setSelectedDest(prev => prev?.location === first.location ? null : first);
                   }}
-                  style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '5px 0', borderBottom: '1px solid #283548', cursor: 'pointer' }}
+                  style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '5px 0', borderBottom: '1px solid #e2e8f0', cursor: 'pointer' }}
                 >
                   <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
                     <div style={{ width: 8, height: 8, borderRadius: 2, background: TZ_LABEL_COLORS[zone] }} />
                     <span style={{ fontSize: 12 }}>{zone} Time</span>
-                    <span style={{ fontSize: 10, color: '#64748b', fontFamily: 'JetBrains Mono, monospace' }}>({TZ_ABBR[zone]})</span>
+                    <span style={{ fontSize: 10, color: '#94a3b8', fontFamily: 'JetBrains Mono, monospace' }}>({TZ_ABBR[zone]})</span>
                   </div>
-                  <div style={{ fontSize: 11, color: '#64748b' }}>
+                  <div style={{ fontSize: 11, color: '#94a3b8' }}>
                     {tzChanges[zone].length} trip{tzChanges[zone].length !== 1 ? 's' : ''}
                   </div>
                 </div>
@@ -209,21 +209,21 @@ export default function SportMap({ sport, onBack }) {
 
           {/* High Load Periods */}
           {congestionPeriods.length > 0 && (
-            <div style={{ margin: '0 16px 12px', background: '#1e293b', borderRadius: 6, padding: '10px 12px', borderLeft: '3px solid #f97316' }}>
+            <div style={{ margin: '0 16px 12px', background: '#fff7ed', border: '1px solid #fed7aa', borderRadius: 6, padding: '10px 12px', borderLeft: '3px solid #f97316' }}>
               <div style={{ fontSize: 10, color: '#f97316', textTransform: 'uppercase', letterSpacing: '0.06em', marginBottom: 8 }}>
                 High Load Periods
               </div>
               {congestionPeriods.map((period, i) => {
                 const locations = [...new Set(period.games.filter(g => !g.home).map(g => g.location))];
                 return (
-                  <div key={i} style={{ marginBottom: i < congestionPeriods.length - 1 ? 8 : 0, paddingBottom: i < congestionPeriods.length - 1 ? 8 : 0, borderBottom: i < congestionPeriods.length - 1 ? '1px solid #283548' : 'none' }}>
+                  <div key={i} style={{ marginBottom: i < congestionPeriods.length - 1 ? 8 : 0, paddingBottom: i < congestionPeriods.length - 1 ? 8 : 0, borderBottom: i < congestionPeriods.length - 1 ? '1px solid #fed7aa' : 'none' }}>
                     <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 3 }}>
                       <span style={{ fontSize: 12, fontFamily: 'JetBrains Mono, monospace', color: '#f97316' }}>
                         {dayOfYearToDisplay(period.startDoy)} – {dayOfYearToDisplay(period.endDoy)}
                       </span>
-                      <span style={{ fontSize: 11, color: '#64748b' }}>{period.gameCount}g</span>
+                      <span style={{ fontSize: 11, color: '#ea580c' }}>{period.gameCount}g</span>
                     </div>
-                    <div style={{ fontSize: 11, color: '#475569' }}>
+                    <div style={{ fontSize: 11, color: '#78350f' }}>
                       {locations.length > 0 ? locations.join(', ') : 'All home games'}
                     </div>
                   </div>
@@ -243,33 +243,33 @@ export default function SportMap({ sport, onBack }) {
                   key={dest.location}
                   onClick={() => handleSelect(dest)}
                   style={{
-                    background: isExpanded ? '#1e293b' : 'transparent',
-                    border: `1px solid ${isExpanded ? '#334155' : 'transparent'}`,
+                    background: isExpanded ? '#f1f5f9' : 'transparent',
+                    border: `1px solid ${isExpanded ? '#e2e8f0' : 'transparent'}`,
                     borderRadius: 6, marginBottom: 4, padding: '8px 10px', cursor: 'pointer',
                   }}
                 >
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                     <div>
-                      <div style={{ fontWeight: 600, fontSize: 13 }}>
+                      <div style={{ fontWeight: 600, fontSize: 13, color: '#0f172a' }}>
                         {dest.home ? '⌂ ' : ''}{dest.location}
                       </div>
                       {trip && <div style={{ fontSize: 10, color: colors.nonConference }}>{trip.label}</div>}
                     </div>
                     <div style={{ textAlign: 'right' }}>
-                      <div style={{ fontSize: 11, color: '#64748b', fontFamily: 'JetBrains Mono, monospace' }}>
+                      <div style={{ fontSize: 11, color: '#94a3b8', fontFamily: 'JetBrains Mono, monospace' }}>
                         {dest.games.length}g
                       </div>
-                      {mi && <div style={{ fontSize: 10, color: '#475569' }}>{Math.round(mi).toLocaleString()} mi</div>}
+                      {mi && <div style={{ fontSize: 10, color: '#94a3b8' }}>{Math.round(mi).toLocaleString()} mi</div>}
                     </div>
                   </div>
                   {isExpanded && (
-                    <div style={{ marginTop: 8, borderTop: '1px solid #334155', paddingTop: 8 }}>
+                    <div style={{ marginTop: 8, borderTop: '1px solid #e2e8f0', paddingTop: 8 }}>
                       {dest.games.map((g, i) => (
                         <div key={i} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 4, fontSize: 12 }}>
                           <div>
-                            <span style={{ color: '#64748b', fontFamily: 'JetBrains Mono, monospace', marginRight: 6 }}>{g.date}</span>
+                            <span style={{ color: '#94a3b8', fontFamily: 'JetBrains Mono, monospace', marginRight: 6 }}>{g.date}</span>
                             {g.opponent}
-                            {g.tournament && <span style={{ fontSize: 10, color: '#475569', marginLeft: 4 }}>({g.tournament})</span>}
+                            {g.tournament && <span style={{ fontSize: 10, color: '#94a3b8', marginLeft: 4 }}>({g.tournament})</span>}
                           </div>
                           <div style={{ color: resultColor(g.result), fontFamily: 'JetBrains Mono, monospace', fontSize: 11 }}>
                             {g.result || '—'}

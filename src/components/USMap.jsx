@@ -162,7 +162,7 @@ export default function USMap({ sport, destinations, selectedDest, hoveredDest, 
         <g transform={`translate(${zoom.x},${zoom.y}) scale(${zoom.k})`}>
           {/* State base fills */}
           {features.map((f, i) => (
-            <path key={`bg-${i}`} d={pathGen(f)} fill="#1e293b" />
+            <path key={`bg-${i}`} d={pathGen(f)} fill="#dde3ea" />
           ))}
 
           {/* Timezone tints — rendered over base fills, under borders */}
@@ -183,7 +183,7 @@ export default function USMap({ sport, destinations, selectedDest, hoveredDest, 
 
           {/* State borders */}
           {features.map((f, i) => (
-            <path key={`border-${i}`} d={pathGen(f)} fill="none" stroke="#334155" strokeWidth={0.5 / zoom.k} />
+            <path key={`border-${i}`} d={pathGen(f)} fill="none" stroke="#7a9bbf" strokeWidth={0.8 / zoom.k} />
           ))}
 
           {/* Trip routes (multi-stop) */}
@@ -193,11 +193,10 @@ export default function USMap({ sport, destinations, selectedDest, hoveredDest, 
                 key={`trip-${trip.id}-${li}`}
                 d={leg.path}
                 fill="none"
-                stroke={isActive ? '#fff' : '#4ecdc4'}
+                stroke={isActive ? '#0f172a' : '#4ecdc4'}
                 strokeWidth={(isActive ? 2.2 : 1.4) / zoom.k}
                 strokeDasharray={dash ? dash.split(',').map(v => `${parseFloat(v) / zoom.k}`).join(',') : undefined}
-                opacity={isActive ? 1 : 0.55}
-                filter={isActive ? 'url(#glow)' : undefined}
+                opacity={isActive ? 1 : 0.65}
               />
             ))
           )}
@@ -208,11 +207,10 @@ export default function USMap({ sport, destinations, selectedDest, hoveredDest, 
               key={`arc-${dest.location}`}
               d={path}
               fill="none"
-              stroke={isActive ? '#fff' : arcColor(dest)}
+              stroke={isActive ? '#0f172a' : arcColor(dest)}
               strokeWidth={(isActive ? 2.2 : 1.4) / zoom.k}
               strokeDasharray={dash ? dash.split(',').map(v => `${parseFloat(v) / zoom.k}`).join(',') : undefined}
-              opacity={isActive ? 1 : 0.6}
-              filter={isActive ? 'url(#glow)' : undefined}
+              opacity={isActive ? 1 : 0.7}
             />
           ))}
 
@@ -226,14 +224,13 @@ export default function USMap({ sport, destinations, selectedDest, hoveredDest, 
                 key={`dot-${d.location}`}
                 cx={xy[0]} cy={xy[1]}
                 r={(isActive ? 6 : 4) / zoom.k}
-                fill={isActive ? '#fff' : arcColor(d)}
+                fill={isActive ? '#0f172a' : arcColor(d)}
                 stroke={isActive ? arcColor(d) : 'none'}
                 strokeWidth={1.5 / zoom.k}
                 style={{ cursor: 'pointer' }}
                 onMouseEnter={() => onHover(d)}
                 onMouseLeave={() => onHover(null)}
                 onClick={() => onSelect(d)}
-                filter={isActive ? 'url(#glow)' : undefined}
               />
             );
           })}
@@ -247,7 +244,7 @@ export default function USMap({ sport, destinations, selectedDest, hoveredDest, 
                 x={xy[0]} y={xy[1] - 10 / zoom.k}
                 textAnchor="middle"
                 fontSize={11 / zoom.k}
-                fill="#fff"
+                fill="#0f172a"
                 fontFamily="JetBrains Mono, monospace"
                 style={{ pointerEvents: 'none' }}
               >
@@ -262,7 +259,7 @@ export default function USMap({ sport, destinations, selectedDest, hoveredDest, 
               cx={homeXY[0]} cy={homeXY[1]}
               r={5 / zoom.k}
               fill={colors.conference}
-              stroke="#fff"
+              stroke="#0f172a"
               strokeWidth={1.5 / zoom.k}
             />
           )}
@@ -305,8 +302,9 @@ export default function USMap({ sport, destinations, selectedDest, hoveredDest, 
       {/* Travel mode legend */}
       <div style={{
         position: 'absolute', bottom: 16, left: 16,
-        background: 'rgba(15,23,42,0.85)', border: '1px solid #1e293b',
+        background: 'rgba(255,255,255,0.90)', border: '1px solid #cbd5e1',
         borderRadius: 6, padding: '8px 12px', display: 'flex', flexDirection: 'column', gap: 5,
+        boxShadow: '0 1px 4px rgba(0,0,0,0.08)',
       }}>
         {[
           { mode: 'flight',  label: 'Flight / Charter', dash: null },
@@ -317,12 +315,12 @@ export default function USMap({ sport, destinations, selectedDest, hoveredDest, 
             <svg width={32} height={10}>
               <line
                 x1={0} y1={5} x2={32} y2={5}
-                stroke="#94a3b8"
+                stroke="#64748b"
                 strokeWidth={1.5}
                 strokeDasharray={dash || undefined}
               />
             </svg>
-            <span style={{ color: '#64748b', fontSize: 10, fontFamily: 'DM Sans, sans-serif' }}>{label}</span>
+            <span style={{ color: '#475569', fontSize: 10, fontFamily: 'DM Sans, sans-serif' }}>{label}</span>
           </div>
         ))}
       </div>
@@ -338,7 +336,7 @@ export default function USMap({ sport, destinations, selectedDest, hoveredDest, 
           <button
             key={label}
             onClick={fn}
-            style={{ width: 32, height: 32, background: '#1e293b', border: '1px solid #334155', color: '#94a3b8', borderRadius: 4, cursor: 'pointer', fontSize: 16, display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+            style={{ width: 32, height: 32, background: 'rgba(255,255,255,0.90)', border: '1px solid #cbd5e1', color: '#475569', borderRadius: 4, cursor: 'pointer', fontSize: 16, display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 1px 3px rgba(0,0,0,0.08)' }}
           >
             {label}
           </button>

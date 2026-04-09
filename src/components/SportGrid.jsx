@@ -27,8 +27,8 @@ function SportCard({ sport, onClick }) {
     <div
       onClick={isActive ? onClick : undefined}
       style={{
-        background: isActive ? '#1e293b' : '#131d2a',
-        border: `1px solid ${isActive ? '#334155' : '#1a2535'}`,
+        background: isActive ? '#ffffff' : '#f8fafc',
+        border: `1px solid ${isActive ? '#e2e8f0' : '#f1f5f9'}`,
         borderRadius: 8,
         padding: 20,
         cursor: isActive ? 'pointer' : 'default',
@@ -37,8 +37,8 @@ function SportCard({ sport, onClick }) {
         position: 'relative',
         overflow: 'hidden',
       }}
-      onMouseEnter={e => { if (isActive) e.currentTarget.style.borderColor = sport.colors?.conference || '#334155'; }}
-      onMouseLeave={e => { if (isActive) e.currentTarget.style.borderColor = '#334155'; }}
+      onMouseEnter={e => { if (isActive) e.currentTarget.style.borderColor = sport.colors?.conference || '#e2e8f0'; }}
+      onMouseLeave={e => { if (isActive) e.currentTarget.style.borderColor = '#e2e8f0'; }}
     >
       {/* Color accent bar */}
       {isActive && (
@@ -48,13 +48,13 @@ function SportCard({ sport, onClick }) {
       <div style={{ marginTop: isActive ? 8 : 0 }}>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 12 }}>
           <div>
-            <div style={{ fontWeight: 700, fontSize: 18, color: isActive ? '#f1f5f9' : '#475569' }}>
+            <div style={{ fontWeight: 700, fontSize: 18, color: isActive ? '#0f172a' : '#94a3b8' }}>
               {sport.label}
             </div>
-            <div style={{ fontSize: 12, color: '#475569', marginTop: 2 }}>{sport.season}</div>
+            <div style={{ fontSize: 12, color: '#94a3b8', marginTop: 2 }}>{sport.season}</div>
           </div>
           {!isActive && (
-            <div style={{ fontSize: 10, color: '#334155', background: '#1e293b', padding: '2px 8px', borderRadius: 12, border: '1px solid #334155' }}>
+            <div style={{ fontSize: 10, color: '#94a3b8', background: '#f1f5f9', padding: '2px 8px', borderRadius: 12, border: '1px solid #e2e8f0' }}>
               Coming Soon
             </div>
           )}
@@ -71,14 +71,14 @@ function SportCard({ sport, onClick }) {
                 <div style={{ fontFamily: 'JetBrains Mono, monospace', fontSize: 16, fontWeight: 700, color: sport.colors?.conference || '#FFB81C' }}>
                   {value}
                 </div>
-                <div style={{ fontSize: 10, color: '#475569', marginTop: 2 }}>{label}</div>
+                <div style={{ fontSize: 10, color: '#94a3b8', marginTop: 2 }}>{label}</div>
               </div>
             ))}
           </div>
         )}
 
         {isActive && sport.lastUpdated && (
-          <div style={{ fontSize: 10, color: '#334155', marginTop: 12 }}>
+          <div style={{ fontSize: 10, color: '#94a3b8', marginTop: 12 }}>
             Updated {sport.lastUpdated}
           </div>
         )}
@@ -89,7 +89,7 @@ function SportCard({ sport, onClick }) {
 
 export default function SportGrid({ onSelect }) {
   return (
-    <div style={{ minHeight: '100vh', background: '#0f172a', fontFamily: 'DM Sans, sans-serif', color: '#fff' }}>
+    <div style={{ minHeight: '100vh', background: '#f1f5f9', fontFamily: 'DM Sans, sans-serif', color: '#0f172a' }}>
       {/* Header */}
       <div style={{ background: '#154734', padding: '20px 32px' }}>
         <div style={{ fontSize: 22, fontWeight: 700 }}>Baylor Athletics</div>
