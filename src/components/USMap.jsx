@@ -70,7 +70,12 @@ export default function USMap({ sport, destinations, selectedDest, hoveredDest, 
   const handleZoomOut = useCallback(() => { const s = d3.select(svgRef.current); const zb = svgRef.current.__zoomBehavior; if (zb) s.transition().duration(300).call(zb.scaleBy, 0.67); }, []);
   const handleReset   = useCallback(() => { const s = d3.select(svgRef.current); const zb = svgRef.current.__zoomBehavior; if (zb) s.transition().duration(400).call(zb.transform, d3.zoomIdentity); }, []);
 
-  const projection = useMemo(() => d3.geoAlbersUsa().scale(dims.w * 1.25).translate([dims.w / 2, dims.h / 2]), [dims]);
+  // Scale so the full US fits in the container — use the more constraining dimension.
+  // D3 AlbersUSA default (scale=1070) fits a 960×500 viewport.
+  const projection = useMemo(() => {
+    const scale = Math.min(dims.w / 960, dims.h / 500) * 1000;
+    return d3.geoAlbersUsa().scale(scale).translate([dims.w / 2, dims.h / 2]);
+  }, [dims]);
   const pathGen = useMemo(() => d3.geoPath().projection(projection), [projection]);
   const proj = useCallback((lat, lng) => projection([lng, lat]), [projection]);
   const homeXY = useMemo(() => proj(home.lat, home.lng), [proj, home]);
