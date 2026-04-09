@@ -1,9 +1,22 @@
+import { useState } from 'react';
 import SportGrid from './components/SportGrid.jsx';
 import SportMap from './components/SportMap.jsx';
-import { useState } from 'react';
 
 export default function App() {
-  const [sport, setSport] = useState(null);
-  if (sport) return <SportMap sport={sport} onBack={() => setSport(null)} />;
-  return <SportGrid onSelect={setSport} />;
+  const [view, setView] = useState({ page: 'grid' });
+
+  if (view.page === 'sport') {
+    return (
+      <SportMap
+        sport={view.sport}
+        onBack={() => setView({ page: 'grid' })}
+      />
+    );
+  }
+
+  return (
+    <SportGrid
+      onSelect={sport => setView({ page: 'sport', sport })}
+    />
+  );
 }
