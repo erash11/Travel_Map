@@ -61,8 +61,8 @@ import softball from './softball.json';
 
 export const sports = [
   softball,
-  { sport: 'baseball', label: 'Baseball', icon: '⚾', season: '2026', status: 'coming-soon' },
-  { sport: 'soccer',   label: 'Soccer',   icon: '⚽', season: '2026', status: 'coming-soon' },
+  { sport: 'baseball', label: 'Baseball', season: '2026', status: 'coming-soon' },
+  { sport: 'soccer',   label: 'Soccer',   season: '2026', status: 'coming-soon' },
 ];
 ```
 
@@ -73,7 +73,7 @@ The `SportGrid` component checks for `status === 'coming-soon'` and renders thos
   "sport": "softball",
   "label": "Softball",
   "season": "2026",
-  "icon": "🥎",
+  "icon": "softball",
   "lastUpdated": "2026-04-09",
   "home": { "city": "Waco, TX", "lat": 31.5493, "lng": -97.1467 },
   "colors": { "conference": "#FFB81C", "nonConference": "#4ecdc4" },
@@ -108,6 +108,7 @@ The `SportGrid` component checks for `status === 'coming-soon'` and renders thos
 - `tripId` — links a game to a `trips` entry. Games sharing a `tripId` are modeled as one continuous road trip (Waco → stop1 → stop2 → ... → Waco). Replaces the existing `swing` field.
 - `travelMode` — on trips object (whole trip shares a mode) or on individual games. Values: `"bus"` | `"flight"` | `"charter"` | `"tbd"`. Null for home games. If both are set, game-level `travelMode` overrides the trip-level value for that specific game.
 - `congestionThreshold` — per-sport config for the sliding window detector. Softball default: 5 games in 7 days.
+- `icon` — text identifier for the sport (e.g. `"softball"`, `"baseball"`). No emojis — the landing page uses text-only sport names for a professional appearance.
 - `lastUpdated` — ISO date string shown on the landing page card.
 
 ---
@@ -116,7 +117,7 @@ The `SportGrid` component checks for `status === 'coming-soon'` and renders thos
 
 - Baylor green/gold header with site title "Baylor Athletics — Travel Demands"
 - Responsive grid of sport cards
-- Each card shows: sport icon, name, season year, total miles, away trips, time zone crossings, last updated date
+- Each card shows: sport name (text only, no emoji), season year, total miles, away trips, time zone crossings, last updated date
 - Card color accent comes from `colors.conference` in the sport JSON
 - Sports with no data file render as muted "Coming Soon" cards (defined in `index.js` with `status: 'coming-soon'`)
 - Clicking an active card sets `view` to `{ page: 'sport', sport: data }` and renders `SportMap`
@@ -190,7 +191,7 @@ A back button on the sport map page calls `setView({ page: 'grid' })`.
 
 ## Hosting
 
-Deploy as a static site. Recommended: **Vercel** (zero-config for Vite, free tier, instant deploy from git push). Alternative: GitHub Pages.
+Deploy as a static site via **GitHub Pages** using a GitHub Actions workflow. On every push to `main`, the workflow runs `npm run build` and publishes `dist/` to the `gh-pages` environment. Vite's `base` config must be set to the repo name (e.g. `/Travel_Map/`) so asset paths resolve correctly under the Pages subdirectory.
 
 ---
 

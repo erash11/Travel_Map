@@ -2230,57 +2230,124 @@ git commit -m "feat: wire App.jsx navigation and complete integration"
 
 ---
 
-## Task 15: Deploy to Vercel
+## Task 15: Deploy to GitHub Pages
 
 **Files:**
-- Create: `vercel.json` (optional — Vite is auto-detected)
+- Modify: `vite.config.js` — add `base` for the repo subdirectory path
+- Create: `.github/workflows/deploy.yml` — GitHub Actions build + deploy workflow
 
-- [ ] **Step 1: Verify build output**
+GitHub Pages serves the site from the `gh-pages` branch. A GitHub Actions workflow builds on every push to `main` and publishes `dist/` automatically.
+
+- [ ] **Step 1: Verify build output locally**
 
 ```bash
 npm run build && npm run preview
 ```
 
-Open the preview URL in a browser. Verify the full app works identically to the dev server.
+Open the preview URL. Confirm full app works. Stop preview server (Ctrl+C).
 
-- [ ] **Step 2: Create `vercel.json` (only needed if deploy auto-detection fails)**
+- [ ] **Step 2: Add `base` to `vite.config.js`**
 
-If Vercel does not auto-detect Vite, create `vercel.json`:
+GitHub Pages serves the site at `https://<username>.github.io/<repo-name>/`. Vite needs the repo name as the base path so asset URLs resolve correctly.
 
-```json
-{
-  "buildCommand": "npm run build",
-  "outputDirectory": "dist",
-  "framework": "vite"
-}
+Replace the contents of `vite.config.js`:
+
+```js
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
+
+export default defineConfig({
+  plugins: [react()],
+  base: '/Travel_Map/',   // must match the GitHub repo name exactly
+  test: {
+    environment: 'node',
+  },
+});
 ```
 
-- [ ] **Step 3: Install Vercel CLI and deploy**
+- [ ] **Step 3: Rebuild with new base and verify preview still works**
 
 ```bash
-npm i -g vercel
-vercel
+npm run build && npm run preview
 ```
 
-Follow the prompts:
-- Link to existing project or create new: **create new**
-- Project name: `baylor-travel-map`
-- Root directory: `.` (current directory)
-- Build command: `npm run build`
-- Output directory: `dist`
+Expected: Preview URL is now served at `/Travel_Map/` path. App still works.
 
-Expected: Vercel outputs a deployment URL like `https://baylor-travel-map.vercel.app`.
+Stop preview server.
 
-- [ ] **Step 4: Verify deployed URL**
+- [ ] **Step 4: Create GitHub Actions deploy workflow**
 
-Open the deployment URL in a browser. Walk through the full integration test from Task 14 Step 2 to confirm the hosted version matches local.
+Create `.github/workflows/deploy.yml`:
 
-- [ ] **Step 5: Commit vercel.json if created**
+```yaml
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build
+        run: npm run build
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+```
+
+- [ ] **Step 5: Enable GitHub Pages in repo settings**
+
+1. Push the workflow file to `main` (next step)
+2. Go to the GitHub repo → **Settings** → **Pages**
+3. Under **Source**, select **GitHub Actions**
+4. Save
+
+- [ ] **Step 6: Commit and push**
 
 ```bash
-git add vercel.json
-git commit -m "chore: add vercel.json for deployment config"
+git add vite.config.js .github/workflows/deploy.yml
+git commit -m "chore: configure GitHub Pages deployment via GitHub Actions"
+git push origin main
 ```
+
+- [ ] **Step 7: Verify deployment**
+
+1. Go to the GitHub repo → **Actions** tab
+2. Watch the "Deploy to GitHub Pages" workflow run
+3. When it completes, open `https://<your-github-username>.github.io/Travel_Map/`
+
+Expected: Full app loads at the GitHub Pages URL. Walk through the integration test from Task 14 Step 2.
 
 ---
 
