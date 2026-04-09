@@ -5,6 +5,7 @@ import { calcTotalMiles } from '../utils/calcMiles.js';
 import { parseDate } from '../utils/parseDate.js';
 import { haversine } from '../utils/haversine.js';
 import { computeTimezoneChanges, TZ_LABEL_COLORS, TZ_ABBR } from '../utils/timezones.js';
+import { detectCongestion, dayOfYearToDisplay } from '../utils/congestion.js';
 
 const FILTER_LABELS = ['All', 'Away', 'Home', 'Conference'];
 
@@ -59,6 +60,13 @@ export default function SportMap({ sport, onBack }) {
   const totalCrossings = useMemo(
     () => Object.values(tzChanges).reduce((sum, dests) => sum + dests.length, 0),
     [tzChanges]
+  );
+
+  const congestionPeriods = useMemo(
+    () => sport.congestionThreshold
+      ? detectCongestion(sport.games, sport.congestionThreshold)
+      : [],
+    [sport]
   );
 
   function handleSelect(dest) {
@@ -143,7 +151,12 @@ export default function SportMap({ sport, onBack }) {
               { label: 'Conf. Games', value: confGames,             sub: 'Big 12' },
             ].map(({ label, value, sub }) => (
               <div key={label} style={{ background: '#1e293b', borderRadius: 6, padding: '10px 12px' }}>
-                <div style={{ fontSize: 10, color: '#64748b', textTransform: 'uppercase', letterSpacing: '0.06em', marginBottom: 4 }}>{label}</div>
+                <div style={{ fontSize: 10, color: '#64748b', textTransform: 'uppercase', letterSpacing: '0.06em', marginBottom: 4, display: 'flex', alignItems: 'center', gap: 4 }}>
+                  {label}
+                  {label === 'Away Trips' && congestionPeriods.length > 0 && (
+                    <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#f97316', display: 'inline-block' }} title="High load periods detected" />
+                  )}
+                </div>
                 <div style={{ fontSize: 22, fontWeight: 700, fontFamily: 'JetBrains Mono, monospace', color: colors.conference }}>{value}</div>
                 <div style={{ fontSize: 10, color: '#475569' }}>{sub}</div>
               </div>
@@ -191,6 +204,31 @@ export default function SportMap({ sport, onBack }) {
                   </div>
                 </div>
               ))}
+            </div>
+          )}
+
+          {/* High Load Periods */}
+          {congestionPeriods.length > 0 && (
+            <div style={{ margin: '0 16px 12px', background: '#1e293b', borderRadius: 6, padding: '10px 12px', borderLeft: '3px solid #f97316' }}>
+              <div style={{ fontSize: 10, color: '#f97316', textTransform: 'uppercase', letterSpacing: '0.06em', marginBottom: 8 }}>
+                High Load Periods
+              </div>
+              {congestionPeriods.map((period, i) => {
+                const locations = [...new Set(period.games.filter(g => !g.home).map(g => g.location))];
+                return (
+                  <div key={i} style={{ marginBottom: i < congestionPeriods.length - 1 ? 8 : 0, paddingBottom: i < congestionPeriods.length - 1 ? 8 : 0, borderBottom: i < congestionPeriods.length - 1 ? '1px solid #283548' : 'none' }}>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 3 }}>
+                      <span style={{ fontSize: 12, fontFamily: 'JetBrains Mono, monospace', color: '#f97316' }}>
+                        {dayOfYearToDisplay(period.startDoy)} – {dayOfYearToDisplay(period.endDoy)}
+                      </span>
+                      <span style={{ fontSize: 11, color: '#64748b' }}>{period.gameCount}g</span>
+                    </div>
+                    <div style={{ fontSize: 11, color: '#475569' }}>
+                      {locations.length > 0 ? locations.join(', ') : 'All home games'}
+                    </div>
+                  </div>
+                );
+              })}
             </div>
           )}
 
