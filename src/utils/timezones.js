@@ -71,10 +71,10 @@ export const FIPS_TIMEZONES = {
 
 // rgba fill colors for SVG state tints — applied over the dark base fill
 export const TZ_FILL_COLORS = {
-  Pacific:  'rgba(99, 179, 237, 0.18)',
-  Mountain: 'rgba(154, 230, 180, 0.18)',
-  Central:  'rgba(252, 211, 77, 0.15)',
-  Eastern:  'rgba(245, 101, 101, 0.18)',
+  Pacific:  'rgba(99, 179, 237, 0.12)',
+  Mountain: 'rgba(154, 230, 180, 0.12)',
+  Central:  'rgba(252, 211, 77, 0.10)',
+  Eastern:  'rgba(245, 101, 101, 0.12)',
 };
 
 // Colors for floating zone label text
