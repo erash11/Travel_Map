@@ -4,6 +4,7 @@ import { groupByDest } from '../utils/groupByDest.js';
 import { calcTotalMiles } from '../utils/calcMiles.js';
 import { parseDate } from '../utils/parseDate.js';
 import { haversine } from '../utils/haversine.js';
+import { computeTimezoneChanges, TZ_LABEL_COLORS, TZ_ABBR } from '../utils/timezones.js';
 
 const FILTER_LABELS = ['All', 'Away', 'Home', 'Conference'];
 
@@ -50,6 +51,15 @@ export default function SportMap({ sport, onBack }) {
       return mi > (max?.mi || 0) ? { ...d, mi } : max;
     }, null);
   }, [awayDests, home]);
+
+  const tzChanges = useMemo(
+    () => computeTimezoneChanges(allDests, trips, home),
+    [allDests, trips, home]
+  );
+  const totalCrossings = useMemo(
+    () => Object.values(tzChanges).reduce((sum, dests) => sum + dests.length, 0),
+    [tzChanges]
+  );
 
   function handleSelect(dest) {
     setSelectedDest(prev => prev?.location === dest.location ? null : dest);
@@ -148,6 +158,39 @@ export default function SportMap({ sport, onBack }) {
               <div style={{ fontSize: 11, color: colors.nonConference, fontFamily: 'JetBrains Mono, monospace' }}>
                 {Math.round(farthestDest.mi).toLocaleString()} mi one-way
               </div>
+            </div>
+          )}
+
+          {/* Time Zone Changes */}
+          {totalCrossings > 0 && (
+            <div style={{ margin: '0 16px 12px', background: '#1e293b', borderRadius: 6, padding: '10px 12px' }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 8 }}>
+                <div style={{ fontSize: 10, color: '#64748b', textTransform: 'uppercase', letterSpacing: '0.06em' }}>
+                  Time Zone Changes
+                </div>
+                <div style={{ fontSize: 11, color: '#64748b', fontFamily: 'JetBrains Mono, monospace' }}>
+                  {totalCrossings} crossing{totalCrossings !== 1 ? 's' : ''}
+                </div>
+              </div>
+              {['Eastern', 'Mountain', 'Pacific'].filter(z => tzChanges[z]).map(zone => (
+                <div
+                  key={zone}
+                  onClick={() => {
+                    const first = tzChanges[zone][0];
+                    if (first) setSelectedDest(prev => prev?.location === first.location ? null : first);
+                  }}
+                  style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '5px 0', borderBottom: '1px solid #283548', cursor: 'pointer' }}
+                >
+                  <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+                    <div style={{ width: 8, height: 8, borderRadius: 2, background: TZ_LABEL_COLORS[zone] }} />
+                    <span style={{ fontSize: 12 }}>{zone} Time</span>
+                    <span style={{ fontSize: 10, color: '#64748b', fontFamily: 'JetBrains Mono, monospace' }}>({TZ_ABBR[zone]})</span>
+                  </div>
+                  <div style={{ fontSize: 11, color: '#64748b' }}>
+                    {tzChanges[zone].length} trip{tzChanges[zone].length !== 1 ? 's' : ''}
+                  </div>
+                </div>
+              ))}
             </div>
           )}
 
