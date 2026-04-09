@@ -1,0 +1,66 @@
+<h2>Sport Selector — Where does it live?</h2>
+<p class="subtitle">How should staff choose which sport's map to view?</p>
+
+<div class="options">
+  <div class="option" data-choice="a" onclick="toggleSelect(this)">
+    <div class="letter">A</div>
+    <div class="content">
+      <h3>Landing Page Grid</h3>
+      <p>Staff lands on a page with sport cards (Softball, Baseball, etc.). Clicking a card opens that sport's full map. Back button returns to the grid.</p>
+      <div class="mockup" style="margin-top:12px">
+        <div class="mockup-header">Baylor Athletics — Travel Maps</div>
+        <div class="mockup-body" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;padding:10px">
+          <div style="background:#154734;color:#FFB81C;padding:14px;border-radius:6px;text-align:center;font-weight:bold;font-size:13px">⚾ Baseball</div>
+          <div style="background:#154734;color:#FFB81C;padding:14px;border-radius:6px;text-align:center;font-weight:bold;font-size:13px;outline:2px solid #FFB81C">🥎 Softball ✓</div>
+          <div style="background:#333;color:#999;padding:14px;border-radius:6px;text-align:center;font-size:13px">+ Add Sport</div>
+          <div style="background:#333;color:#999;padding:14px;border-radius:6px;text-align:center;font-size:13px">⚽ Soccer</div>
+          <div style="background:#333;color:#999;padding:14px;border-radius:6px;text-align:center;font-size:13px">🏀 Basketball</div>
+          <div style="background:#333;color:#999;padding:14px;border-radius:6px;text-align:center;font-size:13px">🏈 Football</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="option" data-choice="b" onclick="toggleSelect(this)">
+    <div class="letter">B</div>
+    <div class="content">
+      <h3>Header Dropdown</h3>
+      <p>The map is always visible. A dropdown in the header lets staff switch sports without leaving the page. Map and sidebar update instantly.</p>
+      <div class="mockup" style="margin-top:12px">
+        <div class="mockup-header" style="display:flex;justify-content:space-between;align-items:center">
+          <span>Baylor Athletics — Travel Map</span>
+          <select style="background:#FFB81C;border:none;padding:4px 8px;border-radius:4px;font-weight:bold;font-size:12px">
+            <option>🥎 Softball 2026</option>
+            <option>⚾ Baseball 2026</option>
+          </select>
+        </div>
+        <div class="mockup-body" style="display:flex;gap:0;height:100px">
+          <div style="flex:1;background:#1a1a2e;display:flex;align-items:center;justify-content:center;color:#555;font-size:12px">US Map</div>
+          <div style="width:140px;background:#111;display:flex;align-items:center;justify-content:center;color:#555;font-size:12px">Sidebar</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="option" data-choice="c" onclick="toggleSelect(this)">
+    <div class="letter">C</div>
+    <div class="content">
+      <h3>Sidebar Tab Strip</h3>
+      <p>Sport tabs live at the top of the sidebar. Clicking a tab swaps the schedule data and redraws the map. The map and sidebar are always co-visible.</p>
+      <div class="mockup" style="margin-top:12px">
+        <div class="mockup-header">Baylor Athletics — Travel Map</div>
+        <div class="mockup-body" style="display:flex;gap:0;height:110px">
+          <div style="flex:1;background:#1a1a2e;display:flex;align-items:center;justify-content:center;color:#555;font-size:12px">US Map</div>
+          <div style="width:160px;background:#111">
+            <div style="display:flex;border-bottom:1px solid #333;font-size:11px">
+              <div style="padding:5px 8px;background:#154734;color:#FFB81C;font-weight:bold">Softball</div>
+              <div style="padding:5px 8px;color:#666">Baseball</div>
+              <div style="padding:5px 8px;color:#666">Soccer</div>
+            </div>
+            <div style="padding:8px;color:#555;font-size:11px">Schedule + stats</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

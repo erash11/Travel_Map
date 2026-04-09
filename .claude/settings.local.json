@@ -1,7 +1,20 @@
 {
   "permissions": {
     "allow": [
-      "Bash(npm create:*)"
+      "Bash(npm create:*)",
+      "Bash(bash:*)",
+      "Bash(cat \"/c/Users/eric_rash/Desktop/DEV/Travel_Map/.superpowers/brainstorm/\"*/state/server-info)",
+      "Bash(ls -d .worktrees)",
+      "Bash(ls -d worktrees)",
+      "Bash(npm test:*)",
+      "Bash(grep -E \"^\\(package\\\\.json|vite\\\\.config\\\\.js|index\\\\.html\\)$\")",
+      "Bash(node -e ':*)",
+      "Bash(node:*)",
+      "Bash(find \"C:\\\\Users\\\\eric_rash\\\\Desktop\\\\DEV\\\\Travel_Map\" -type f \\\\\\( -name \"*.md\" -o -name \"*.txt\" \\\\\\) -exec grep -l \"1290.*1316\\\\|1303 miles\" {} \\\\;)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(cat)",
+      "Read(//tmp/**)"
     ]
   }
 }
