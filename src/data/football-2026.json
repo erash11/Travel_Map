@@ -1,0 +1,178 @@
+{
+  "sport": "football-2026",
+  "label": "Football",
+  "season": "2026",
+  "lastUpdated": "2026-06-10",
+  "home": {
+    "city": "Waco, TX",
+    "lat": 31.5493,
+    "lng": -97.1467
+  },
+  "colors": {
+    "conference": "#FFB81C",
+    "nonConference": "#4ecdc4"
+  },
+  "congestionThreshold": {
+    "games": 5,
+    "windowDays": 7
+  },
+  "trips": [],
+  "games": [
+    {
+      "date": "Sep 5",
+      "opponent": "Auburn",
+      "location": "Atlanta, GA",
+      "lat": 33.749,
+      "lng": -84.388,
+      "home": false,
+      "result": null,
+      "conference": false,
+      "tripId": null,
+      "travelMode": "tbd"
+    },
+    {
+      "date": "Sep 12",
+      "opponent": "Prairie View A&M",
+      "location": "Waco, TX",
+      "lat": 31.5493,
+      "lng": -97.1467,
+      "home": true,
+      "result": null,
+      "conference": false,
+      "tripId": null,
+      "travelMode": null
+    },
+    {
+      "date": "Sep 19",
+      "opponent": "Louisiana Tech",
+      "location": "Waco, TX",
+      "lat": 31.5493,
+      "lng": -97.1467,
+      "home": true,
+      "result": null,
+      "conference": false,
+      "tripId": null,
+      "travelMode": null
+    },
+    {
+      "date": "Sep 26",
+      "opponent": "Colorado",
+      "location": "Waco, TX",
+      "lat": 31.5493,
+      "lng": -97.1467,
+      "home": true,
+      "result": null,
+      "conference": true,
+      "tripId": null,
+      "travelMode": null
+    },
+    {
+      "date": "Oct 3",
+      "opponent": "Arizona State",
+      "location": "Tempe, AZ",
+      "lat": 33.4148,
+      "lng": -111.9093,
+      "home": false,
+      "result": null,
+      "conference": true,
+      "tripId": null,
+      "travelMode": "tbd"
+    },
+    {
+      "date": "Oct 17",
+      "opponent": "TCU",
+      "location": "Waco, TX",
+      "lat": 31.5493,
+      "lng": -97.1467,
+      "home": true,
+      "result": null,
+      "conference": true,
+      "tripId": null,
+      "travelMode": null
+    },
+    {
+      "date": "Oct 24",
+      "opponent": "Kansas",
+      "location": "Lawrence, KS",
+      "lat": 38.9717,
+      "lng": -95.2352,
+      "home": false,
+      "result": null,
+      "conference": true,
+      "tripId": null,
+      "travelMode": "tbd"
+    },
+    {
+      "date": "Oct 30",
+      "opponent": "UCF",
+      "location": "Orlando, FL",
+      "lat": 28.5383,
+      "lng": -81.3792,
+      "home": false,
+      "result": null,
+      "conference": true,
+      "tripId": null,
+      "travelMode": "tbd"
+    },
+    {
+      "date": "Nov 7",
+      "opponent": "Iowa State",
+      "location": "Waco, TX",
+      "lat": 31.5493,
+      "lng": -97.1467,
+      "home": true,
+      "result": null,
+      "conference": true,
+      "tripId": null,
+      "travelMode": null
+    },
+    {
+      "date": "Nov 14",
+      "opponent": "BYU",
+      "location": "Provo, UT",
+      "lat": 40.2338,
+      "lng": -111.6585,
+      "home": false,
+      "result": null,
+      "conference": true,
+      "tripId": null,
+      "travelMode": "tbd"
+    },
+    {
+      "date": "Nov 21",
+      "opponent": "Texas Tech",
+      "location": "Waco, TX",
+      "lat": 31.5493,
+      "lng": -97.1467,
+      "home": true,
+      "result": null,
+      "conference": true,
+      "tripId": null,
+      "travelMode": null
+    },
+    {
+      "date": "Nov 28",
+      "opponent": "Houston",
+      "location": "Houston, TX",
+      "lat": 29.7633,
+      "lng": -95.3633,
+      "home": false,
+      "result": null,
+      "conference": true,
+      "tripId": null,
+      "travelMode": "tbd"
+    },
+    {
+      "date": "Dec 4",
+      "opponent": "Big 12 Championship",
+      "location": "Arlington, TX",
+      "lat": 32.7357,
+      "lng": -97.1081,
+      "home": false,
+      "result": null,
+      "conference": false,
+      "tripId": null,
+      "travelMode": "tbd"
+    }
+  ]
+}

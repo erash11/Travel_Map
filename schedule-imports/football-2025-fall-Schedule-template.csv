@@ -1,0 +1,13 @@
+date,opponent,location,home,conference,result,tournament,tripId,travelMode,lat,lng
+Aug 29,Auburn,"Waco, TX",TRUE,FALSE,L 24-38,,,,,
+Sep 6,SMU,"Dallas, TX",FALSE,FALSE,W 48-45 (2OT),,,tbd,,
+Sep 13,Samford,"Waco, TX",TRUE,FALSE,W 42-7,,,,,
+Sep 20,Arizona State,"Waco, TX",TRUE,TRUE,L 24-27,,,,,
+Sep 27,Oklahoma State,"Stillwater, OK",FALSE,TRUE,W 45-27,,,tbd,,
+Oct 4,Kansas State,"Waco, TX",TRUE,TRUE,W 35-34,,,,,
+Oct 18,TCU,"Fort Worth, TX",FALSE,TRUE,L 36-42,,,tbd,,
+Oct 25,Cincinnati,"Cincinnati, OH",FALSE,TRUE,L 20-41,,,tbd,,
+Nov 1,UCF,"Waco, TX",TRUE,TRUE,W 30-3,,,,,
+Nov 15,Utah,"Waco, TX",TRUE,TRUE,L 28-55,,,,,
+Nov 22,Arizona,"Tucson, AZ",FALSE,TRUE,L 17-41,,,tbd,,
+Nov 29,Houston,"Waco, TX",TRUE,TRUE,L 24-31,,,,,

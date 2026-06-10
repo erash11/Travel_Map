@@ -1,0 +1,166 @@
+{
+  "sport": "football-2025",
+  "label": "Football",
+  "season": "2025",
+  "lastUpdated": "2026-06-10",
+  "home": {
+    "city": "Waco, TX",
+    "lat": 31.5493,
+    "lng": -97.1467
+  },
+  "colors": {
+    "conference": "#FFB81C",
+    "nonConference": "#4ecdc4"
+  },
+  "congestionThreshold": {
+    "games": 5,
+    "windowDays": 7
+  },
+  "trips": [],
+  "games": [
+    {
+      "date": "Aug 29",
+      "opponent": "Auburn",
+      "location": "Waco, TX",
+      "lat": 31.5493,
+      "lng": -97.1467,
+      "home": true,
+      "result": "L 24-38",
+      "conference": false,
+      "tripId": null,
+      "travelMode": null
+    },
+    {
+      "date": "Sep 6",
+      "opponent": "SMU",
+      "location": "Dallas, TX",
+      "lat": 32.7831,
+      "lng": -96.8067,
+      "home": false,
+      "result": "W 48-45 (2OT)",
+      "conference": false,
+      "tripId": null,
+      "travelMode": "tbd"
+    },
+    {
+      "date": "Sep 13",
+      "opponent": "Samford",
+      "location": "Waco, TX",
+      "lat": 31.5493,
+      "lng": -97.1467,
+      "home": true,
+      "result": "W 42-7",
+      "conference": false,
+      "tripId": null,
+      "travelMode": null
+    },
+    {
+      "date": "Sep 20",
+      "opponent": "Arizona State",
+      "location": "Waco, TX",
+      "lat": 31.5493,
+      "lng": -97.1467,
+      "home": true,
+      "result": "L 24-27",
+      "conference": true,
+      "tripId": null,
+      "travelMode": null
+    },
+    {
+      "date": "Sep 27",
+      "opponent": "Oklahoma State",
+      "location": "Stillwater, OK",
+      "lat": 36.1156,
+      "lng": -97.0584,
+      "home": false,
+      "result": "W 45-27",
+      "conference": true,
+      "tripId": null,
+      "travelMode": "tbd"
+    },
+    {
+      "date": "Oct 4",
+      "opponent": "Kansas State",
+      "location": "Waco, TX",
+      "lat": 31.5493,
+      "lng": -97.1467,
+      "home": true,
+      "result": "W 35-34",
+      "conference": true,
+      "tripId": null,
+      "travelMode": null
+    },
+    {
+      "date": "Oct 18",
+      "opponent": "TCU",
+      "location": "Fort Worth, TX",
+      "lat": 32.7254,
+      "lng": -97.3208,
+      "home": false,
+      "result": "L 36-42",
+      "conference": true,
+      "tripId": null,
+      "travelMode": "tbd"
+    },
+    {
+      "date": "Oct 25",
+      "opponent": "Cincinnati",
+      "location": "Cincinnati, OH",
+      "lat": 39.1271,
+      "lng": -84.5144,
+      "home": false,
+      "result": "L 20-41",
+      "conference": true,
+      "tripId": null,
+      "travelMode": "tbd"
+    },
+    {
+      "date": "Nov 1",
+      "opponent": "UCF",
+      "location": "Waco, TX",
+      "lat": 31.5493,
+      "lng": -97.1467,
+      "home": true,
+      "result": "W 30-3",
+      "conference": true,
+      "tripId": null,
+      "travelMode": null
+    },
+    {
+      "date": "Nov 15",
+      "opponent": "Utah",
+      "location": "Waco, TX",
+      "lat": 31.5493,
+      "lng": -97.1467,
+      "home": true,
+      "result": "L 28-55",
+      "conference": true,
+      "tripId": null,
+      "travelMode": null
+    },
+    {
+      "date": "Nov 22",
+      "opponent": "Arizona",
+      "location": "Tucson, AZ",
+      "lat": 32.2217,
+      "lng": -110.9265,
+      "home": false,
+      "result": "L 17-41",
+      "conference": true,
+      "tripId": null,
+      "travelMode": "tbd"
+    },
+    {
+      "date": "Nov 29",
+      "opponent": "Houston",
+      "location": "Waco, TX",
+      "lat": 31.5493,
+      "lng": -97.1467,
+      "home": true,
+      "result": "L 24-31",
+      "conference": true,
+      "tripId": null,
+      "travelMode": null
+    }
+  ]
+}

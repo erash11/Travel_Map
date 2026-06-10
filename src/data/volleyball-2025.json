@@ -1,0 +1,380 @@
+{
+  "sport": "volleyball-2025",
+  "label": "Volleyball",
+  "season": "2025",
+  "lastUpdated": "2026-06-10",
+  "home": {
+    "city": "Waco, TX",
+    "lat": 31.5493,
+    "lng": -97.1467
+  },
+  "colors": {
+    "conference": "#FFB81C",
+    "nonConference": "#4ecdc4"
+  },
+  "congestionThreshold": {
+    "games": 5,
+    "windowDays": 7
+  },
+  "trips": [
+    {
+      "id": "baton-rouge-trip-1",
+      "label": "Baton Rouge Trip 1",
+      "travelMode": "tbd",
+      "stops": [
+        "Baton Rouge, LA"
+      ]
+    },
+    {
+      "id": "west-lafayette-trip-2",
+      "label": "West Lafayette Trip 2",
+      "travelMode": "tbd",
+      "stops": [
+        "West Lafayette, IN"
+      ]
+    }
+  ],
+  "games": [
+    {
+      "date": "Aug 29",
+      "opponent": "South Alabama",
+      "location": "Baton Rouge, LA",
+      "lat": 30.4433,
+      "lng": -91.1875,
+      "home": false,
+      "result": "W 3-1",
+      "conference": false,
+      "tripId": "baton-rouge-trip-1",
+      "travelMode": "tbd"
+    },
+    {
+      "date": "Aug 30",
+      "opponent": "SMU",
+      "location": "Baton Rouge, LA",
+      "lat": 30.4433,
+      "lng": -91.1875,
+      "home": false,
+      "result": "L 2-3",
+      "conference": false,
+      "tripId": "baton-rouge-trip-1",
+      "travelMode": "tbd"
+    },
+    {
+      "date": "Aug 31",
+      "opponent": "LSU",
+      "location": "Baton Rouge, LA",
+      "lat": 30.4433,
+      "lng": -91.1875,
+      "home": false,
+      "result": "W 3-1",
+      "conference": false,
+      "tripId": "baton-rouge-trip-1",
+      "travelMode": "tbd"
+    },
+    {
+      "date": "Sep 4",
+      "opponent": "Northwestern",
+      "location": "Waco, TX",
+      "lat": 31.5493,
+      "lng": -97.1467,
+      "home": true,
+      "result": "W 3-2",
+      "conference": false,
+      "tournament": "Baylor Classic",
+      "tripId": null,
+      "travelMode": null
+    },
+    {
+      "date": "Sep 5",
+      "opponent": "Saint Mary's (CA)",
+      "location": "Waco, TX",
+      "lat": 31.5493,
+      "lng": -97.1467,
+      "home": true,
+      "result": "W 3-0",
+      "conference": false,
+      "tournament": "Baylor Classic",
+      "tripId": null,
+      "travelMode": null
+    },
+    {
+      "date": "Sep 7",
+      "opponent": "Rice",
+      "location": "Waco, TX",
+      "lat": 31.5493,
+      "lng": -97.1467,
+      "home": true,
+      "result": "W 3-0",
+      "conference": false,
+      "tournament": "Baylor Classic",
+      "tripId": null,
+      "travelMode": null
+    },
+    {
+      "date": "Sep 14",
+      "opponent": "Florida",
+      "location": "Gainesville, FL",
+      "lat": 29.6516,
+      "lng": -82.3248,
+      "home": false,
+      "result": "L 2-3",
+      "conference": false,
+      "tripId": null,
+      "travelMode": "tbd"
+    },
+    {
+      "date": "Sep 16",
+      "opponent": "UCF",
+      "location": "Orlando, FL",
+      "lat": 28.5383,
+      "lng": -81.3792,
+      "home": false,
+      "result": "W 3-0",
+      "conference": true,
+      "tripId": null,
+      "travelMode": "tbd"
+    },
+    {
+      "date": "Sep 19",
+      "opponent": "Texas",
+      "location": "Austin, TX",
+      "lat": 30.2672,
+      "lng": -97.7431,
+      "home": false,
+      "result": "L 0-3",
+      "conference": false,
+      "tripId": null,
+      "travelMode": "tbd"
+    },
+    {
+      "date": "Sep 24",
+      "opponent": "Texas Tech",
+      "location": "Lubbock, TX",
+      "lat": 33.5779,
+      "lng": -101.8552,
+      "home": false,
+      "result": "W 3-1",
+      "conference": true,
+      "tripId": null,
+      "travelMode": "tbd"
+    },
+    {
+      "date": "Sep 27",
+      "opponent": "TCU",
+      "location": "Waco, TX",
+      "lat": 31.5493,
+      "lng": -97.1467,
+      "home": true,
+      "result": "W 3-2",
+      "conference": true,
+      "tripId": null,
+      "travelMode": null
+    },
+    {
+      "date": "Oct 1",
+      "opponent": "Houston",
+      "location": "Waco, TX",
+      "lat": 31.5493,
+      "lng": -97.1467,
+      "home": true,
+      "result": "W 3-0",
+      "conference": true,
+      "tripId": null,
+      "travelMode": null
+    },
+    {
+      "date": "Oct 3",
+      "opponent": "Kansas",
+      "location": "Waco, TX",
+      "lat": 31.5493,
+      "lng": -97.1467,
+      "home": true,
+      "result": "L 2-3",
+      "conference": true,
+      "tripId": null,
+      "travelMode": null
+    },
+    {
+      "date": "Oct 8",
+      "opponent": "Arizona State",
+      "location": "Tempe, AZ",
+      "lat": 33.4148,
+      "lng": -111.9093,
+      "home": false,
+      "result": "L 0-3",
+      "conference": true,
+      "tripId": null,
+      "travelMode": "tbd"
+    },
+    {
+      "date": "Oct 10",
+      "opponent": "Arizona",
+      "location": "Tucson, AZ",
+      "lat": 32.2217,
+      "lng": -110.9265,
+      "home": false,
+      "result": "L 0-3",
+      "conference": true,
+      "tripId": null,
+      "travelMode": "tbd"
+    },
+    {
+      "date": "Oct 15",
+      "opponent": "Kansas State",
+      "location": "Waco, TX",
+      "lat": 31.5493,
+      "lng": -97.1467,
+      "home": true,
+      "result": "W 3-1",
+      "conference": true,
+      "tripId": null,
+      "travelMode": null
+    },
+    {
+      "date": "Oct 17",
+      "opponent": "Cincinnati",
+      "location": "Waco, TX",
+      "lat": 31.5493,
+      "lng": -97.1467,
+      "home": true,
+      "result": "W 3-1",
+      "conference": true,
+      "tripId": null,
+      "travelMode": null
+    },
+    {
+      "date": "Oct 23",
+      "opponent": "BYU",
+      "location": "Waco, TX",
+      "lat": 31.5493,
+      "lng": -97.1467,
+      "home": true,
+      "result": "W 3-2",
+      "conference": true,
+      "tripId": null,
+      "travelMode": null
+    },
+    {
+      "date": "Oct 29",
+      "opponent": "Iowa State",
+      "location": "Ames, IA",
+      "lat": 42.0347,
+      "lng": -93.6199,
+      "home": false,
+      "result": "L 0-3",
+      "conference": true,
+      "tripId": null,
+      "travelMode": "tbd"
+    },
+    {
+      "date": "Oct 31",
+      "opponent": "Colorado",
+      "location": "Boulder, CO",
+      "lat": 40.015,
+      "lng": -105.2705,
+      "home": false,
+      "result": "L 1-3",
+      "conference": true,
+      "tripId": null,
+      "travelMode": "tbd"
+    },
+    {
+      "date": "Nov 7",
+      "opponent": "West Virginia",
+      "location": "Waco, TX",
+      "lat": 31.5493,
+      "lng": -97.1467,
+      "home": true,
+      "result": "W 3-0",
+      "conference": true,
+      "tripId": null,
+      "travelMode": null
+    },
+    {
+      "date": "Nov 9",
+      "opponent": "Utah",
+      "location": "Waco, TX",
+      "lat": 31.5493,
+      "lng": -97.1467,
+      "home": true,
+      "result": "W 3-0",
+      "conference": true,
+      "tripId": null,
+      "travelMode": null
+    },
+    {
+      "date": "Nov 12",
+      "opponent": "Kansas State",
+      "location": "Manhattan, KS",
+      "lat": 39.1836,
+      "lng": -96.5717,
+      "home": false,
+      "result": "L 1-3",
+      "conference": true,
+      "tripId": null,
+      "travelMode": "tbd"
+    },
+    {
+      "date": "Nov 15",
+      "opponent": "Houston",
+      "location": "Houston, TX",
+      "lat": 29.7633,
+      "lng": -95.3633,
+      "home": false,
+      "result": "W 3-1",
+      "conference": true,
+      "tripId": null,
+      "travelMode": "tbd"
+    },
+    {
+      "date": "Nov 20",
+      "opponent": "Texas Tech",
+      "location": "Waco, TX",
+      "lat": 31.5493,
+      "lng": -97.1467,
+      "home": true,
+      "result": "W 3-1",
+      "conference": true,
+      "tripId": null,
+      "travelMode": null
+    },
+    {
+      "date": "Nov 26",
+      "opponent": "TCU",
+      "location": "Fort Worth, TX",
+      "lat": 32.7254,
+      "lng": -97.3208,
+      "home": false,
+      "result": "W 3-2",
+      "conference": true,
+      "tripId": null,
+      "travelMode": "tbd"
+    },
+    {
+      "date": "Dec 4",
+      "opponent": "Arkansas State",
+      "location": "West Lafayette, IN",
+      "lat": 40.4259,
+      "lng": -86.9081,
+      "home": false,
+      "result": "W 3-2",
+      "conference": false,
+      "tournament": "NCAA First & Second Rounds",
+      "tripId": "west-lafayette-trip-2",
+      "travelMode": "tbd"
+    },
+    {
+      "date": "Dec 5",
+      "opponent": "Purdue",
+      "location": "West Lafayette, IN",
+      "lat": 40.4259,
+      "lng": -86.9081,
+      "home": false,
+      "result": "L 1-3",
+      "conference": false,
+      "tournament": "NCAA First & Second Rounds",
+      "tripId": "west-lafayette-trip-2",
+      "travelMode": "tbd"
+    }
+  ]
+}

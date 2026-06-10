@@ -1,0 +1,123 @@
+{
+  "sport": "volleyball-2026-spring",
+  "label": "Volleyball Spring",
+  "season": "2026",
+  "lastUpdated": "2026-06-10",
+  "home": {
+    "city": "Waco, TX",
+    "lat": 31.5493,
+    "lng": -97.1467
+  },
+  "colors": {
+    "conference": "#FFB81C",
+    "nonConference": "#4ecdc4"
+  },
+  "congestionThreshold": {
+    "games": 5,
+    "windowDays": 7
+  },
+  "trips": [
+    {
+      "id": "college-station-trip-1",
+      "label": "College Station Trip 1",
+      "travelMode": "tbd",
+      "stops": [
+        "College Station, TX"
+      ]
+    },
+    {
+      "id": "dallas-trip-2",
+      "label": "Dallas Trip 2",
+      "travelMode": "tbd",
+      "stops": [
+        "Dallas, TX"
+      ]
+    }
+  ],
+  "games": [
+    {
+      "date": "Mar 21",
+      "opponent": "UTSA",
+      "location": "Waco, TX",
+      "lat": 31.5493,
+      "lng": -97.1467,
+      "home": true,
+      "result": null,
+      "conference": false,
+      "tripId": null,
+      "travelMode": null
+    },
+    {
+      "date": "Mar 21",
+      "opponent": "ACU",
+      "location": "Waco, TX",
+      "lat": 31.5493,
+      "lng": -97.1467,
+      "home": true,
+      "result": null,
+      "conference": false,
+      "tripId": null,
+      "travelMode": null
+    },
+    {
+      "date": "Mar 28",
+      "opponent": "Houston Fast Tournament",
+      "location": "Houston, TX",
+      "lat": 29.7633,
+      "lng": -95.3633,
+      "home": false,
+      "result": null,
+      "conference": false,
+      "tripId": null,
+      "travelMode": "tbd"
+    },
+    {
+      "date": "Apr 11",
+      "opponent": "Texas A&M",
+      "location": "College Station, TX",
+      "lat": 30.628,
+      "lng": -96.3344,
+      "home": false,
+      "result": null,
+      "conference": false,
+      "tripId": "college-station-trip-1",
+      "travelMode": "tbd"
+    },
+    {
+      "date": "Apr 11",
+      "opponent": "SMU",
+      "location": "College Station, TX",
+      "lat": 30.628,
+      "lng": -96.3344,
+      "home": false,
+      "result": null,
+      "conference": false,
+      "tripId": "college-station-trip-1",
+      "travelMode": "tbd"
+    },
+    {
+      "date": "Apr 25",
+      "opponent": "TCU",
+      "location": "Dallas, TX",
+      "lat": 32.7831,
+      "lng": -96.8067,
+      "home": false,
+      "result": null,
+      "conference": false,
+      "tripId": "dallas-trip-2",
+      "travelMode": "tbd"
+    },
+    {
+      "date": "Apr 25",
+      "opponent": "SMU",
+      "location": "Dallas, TX",
+      "lat": 32.7831,
+      "lng": -96.8067,
+      "home": false,
+      "result": null,
+      "conference": false,
+      "tripId": "dallas-trip-2",
+      "travelMode": "tbd"
+    }
+  ]
+}

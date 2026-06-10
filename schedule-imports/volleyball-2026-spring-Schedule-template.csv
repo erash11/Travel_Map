@@ -1,0 +1,8 @@
+date,opponent,location,home,conference,result,tournament,tripId,travelMode,lat,lng
+Mar 21,UTSA,"Waco, TX",TRUE,FALSE,,,,,,
+Mar 21,ACU,"Waco, TX",TRUE,FALSE,,,,,,
+Mar 28,Houston Fast Tournament,"Houston, TX",FALSE,FALSE,,,,tbd,,
+Apr 11,Texas A&M,"College Station, TX",FALSE,FALSE,,,college-station-trip-1,tbd,,
+Apr 11,SMU,"College Station, TX",FALSE,FALSE,,,college-station-trip-1,tbd,,
+Apr 25,TCU,"Dallas, TX",FALSE,FALSE,,,dallas-trip-2,tbd,,
+Apr 25,SMU,"Dallas, TX",FALSE,FALSE,,,dallas-trip-2,tbd,,
