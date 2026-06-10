@@ -110,13 +110,17 @@ export default function USMap({ sport, destinations, selectedDest, hoveredDest, 
 
   const awayDests = destinations.filter(d => !d.home);
 
+  // Destination identity is lat/lng (mirrors groupByDest) — two separate trips
+  // to the same city (Austin series + Austin regional) are distinct destinations.
+  const destKey = d => `${d.lat},${d.lng}`;
+
   const tripRoutes = useMemo(() => {
     const routes = [];
     const handled = new Set();
     trips.forEach(trip => {
       const stops = trip.stops.map(loc => awayDests.find(d => d.location === loc)).filter(Boolean);
       if (stops.length < 2) return;
-      const isActive = active && stops.some(s => s.location === active.location);
+      const isActive = active && stops.some(s => destKey(s) === destKey(active));
       const mode = trip.travelMode || 'tbd';
       const dash = travelModeDash(mode);
       const legs = [];
@@ -127,7 +131,7 @@ export default function USMap({ sport, destinations, selectedDest, hoveredDest, 
         legs.push({ path: arcPath(p1[0], p1[1], p2[0], p2[1]), x2: p2[0], y2: p2[1] });
       }
       routes.push({ trip, stops, legs, isActive, dash });
-      stops.forEach(s => handled.add(s.location));
+      stops.forEach(s => handled.add(destKey(s)));
     });
     return { routes, handledLocations: handled };
   }, [awayDests, trips, home, active, proj]);
@@ -135,11 +139,11 @@ export default function USMap({ sport, destinations, selectedDest, hoveredDest, 
   const soloArcs = useMemo(() => {
     if (!homeXY) return [];
     return awayDests
-      .filter(d => !tripRoutes.handledLocations.has(d.location))
+      .filter(d => !tripRoutes.handledLocations.has(destKey(d)))
       .map(d => {
         const xy = proj(d.lat, d.lng);
         if (!xy) return null;
-        const isActive = active && active.location === d.location;
+        const isActive = active && destKey(active) === destKey(d);
         const mode = getTravelMode(d);
         const dash = travelModeDash(mode);
         return { dest: d, path: arcPath(homeXY[0], homeXY[1], xy[0], xy[1]), dx: xy[0], dy: xy[1], isActive, dash };
@@ -204,7 +208,7 @@ export default function USMap({ sport, destinations, selectedDest, hoveredDest, 
           {/* Solo arcs */}
           {soloArcs.map(({ dest, path, isActive, dash }) => (
             <path
-              key={`arc-${dest.location}`}
+              key={`arc-${destKey(dest)}`}
               d={path}
               fill="none"
               stroke={isActive ? '#0f172a' : arcColor(dest)}
@@ -218,10 +222,10 @@ export default function USMap({ sport, destinations, selectedDest, hoveredDest, 
           {awayDests.map(d => {
             const xy = proj(d.lat, d.lng);
             if (!xy) return null;
-            const isActive = active && active.location === d.location;
+            const isActive = active && destKey(active) === destKey(d);
             return (
               <circle
-                key={`dot-${d.location}`}
+                key={`dot-${destKey(d)}`}
                 cx={xy[0]} cy={xy[1]}
                 r={(isActive ? 6 : 4) / zoom.k}
                 fill={isActive ? '#0f172a' : arcColor(d)}

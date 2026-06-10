@@ -1,5 +1,8 @@
-import { useState, useMemo } from 'react';
+import { useState, useMemo, lazy, Suspense } from 'react';
 import USMap from './USMap.jsx';
+
+// Lazy: the Three.js globe chunk only downloads when cinematic mode opens
+const CinematicMode = lazy(() => import('./cinematic/CinematicMode.jsx'));
 import { groupByDest } from '../utils/groupByDest.js';
 import { calcTotalMiles } from '../utils/calcMiles.js';
 import { parseDate } from '../utils/parseDate.js';
@@ -15,6 +18,7 @@ export default function SportMap({ sport, onBack }) {
   const [hoveredDest, setHoveredDest] = useState(null);
   const [showTimezones, setShowTimezones] = useState(true);
   const [showSchedule, setShowSchedule] = useState(false);
+  const [showCinematic, setShowCinematic] = useState(false);
 
   const home = sport.home;
   const trips = sport.trips || [];
@@ -38,7 +42,9 @@ export default function SportMap({ sport, onBack }) {
   const totalMiles = useMemo(() => calcTotalMiles(awayDests, trips, home), [awayDests, trips, home]);
   const awayTrips = useMemo(() => {
     const seen = new Set();
-    awayDests.forEach(d => { if (d.tripId) seen.add(d.tripId); else seen.add(d.location); });
+    // Key standalone destinations by coords, not location string — two separate
+    // trips to the same city (e.g. Austin series + Austin regional) are distinct.
+    awayDests.forEach(d => { if (d.tripId) seen.add(d.tripId); else seen.add(`${d.lat},${d.lng}`); });
     return seen.size;
   }, [awayDests]);
   const homeGames = useMemo(() => sport.games.filter(g => g.home).length, [sport]);
@@ -65,8 +71,12 @@ export default function SportMap({ sport, onBack }) {
     [sport]
   );
 
+  // Destination identity is lat/lng (mirrors groupByDest), not location string —
+  // two separate trips to the same city are distinct destinations.
+  const destKey = d => `${d.lat},${d.lng}`;
+
   function handleSelect(dest) {
-    setSelectedDest(prev => prev?.location === dest.location ? null : dest);
+    setSelectedDest(prev => prev && destKey(prev) === destKey(dest) ? null : dest);
   }
 
   const sortedDests = useMemo(() => {
@@ -139,6 +149,16 @@ export default function SportMap({ sport, onBack }) {
           }}
         >
           Schedule
+        </button>
+        <button
+          onClick={() => setShowCinematic(true)}
+          style={{
+            background: '#FFB81C', border: '1px solid #FFB81C', color: '#000',
+            borderRadius: 4, padding: '5px 12px', cursor: 'pointer', fontSize: 12,
+            fontWeight: 700, whiteSpace: 'nowrap',
+          }}
+        >
+          ✦ Cinematic
         </button>
       </div>
 
@@ -289,12 +309,12 @@ export default function SportMap({ sport, onBack }) {
             </div>
             <div style={{ flex: 1, overflowY: 'auto', padding: '8px 16px 16px' }}>
               {sortedDests.map(dest => {
-                const isSelected = selectedDest?.location === dest.location;
+                const isSelected = selectedDest && destKey(selectedDest) === destKey(dest);
                 const trip = dest.tripId ? trips.find(t => t.id === dest.tripId) : null;
                 const mi = dest.home ? null : haversine(home.lat, home.lng, dest.lat, dest.lng);
                 return (
                   <div
-                    key={dest.location}
+                    key={destKey(dest)}
                     onClick={() => handleSelect(dest)}
                     style={{
                       background: isSelected ? '#f1f5f9' : 'transparent',
@@ -323,6 +343,17 @@ export default function SportMap({ sport, onBack }) {
           </div>
         )}
       </div>
+
+      {/* Cinematic season tour — full-screen overlay */}
+      {showCinematic && (
+        <Suspense fallback={
+          <div style={{ position: 'fixed', inset: 0, zIndex: 100, background: '#050d1a', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#94a3b8', fontSize: 14, fontFamily: 'DM Sans, sans-serif' }}>
+            Loading cinematic mode…
+          </div>
+        }>
+          <CinematicMode sport={sport} onClose={() => setShowCinematic(false)} />
+        </Suspense>
+      )}
     </div>
   );
 }

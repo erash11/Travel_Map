@@ -15,7 +15,8 @@ function SportCard({ sport, onClick }) {
     const totalMiles = calcTotalMiles(awayDests, sport.trips || [], sport.home);
     const awayTrips = (() => {
       const seen = new Set();
-      awayDests.forEach(d => { if (d.tripId) seen.add(d.tripId); else seen.add(d.location); });
+      // Coords, not location string — two trips to the same city count separately
+      awayDests.forEach(d => { if (d.tripId) seen.add(d.tripId); else seen.add(`${d.lat},${d.lng}`); });
       return seen.size;
     })();
     const tzChanges = computeTimezoneChanges(allDests, sport.trips || [], sport.home);
