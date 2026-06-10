@@ -11,6 +11,11 @@ and deployment workflow. This file adds current-state context that changes more 
 - **Softball 2026 data is complete and verified** against BaylorBears.com /
   big12sports.com (58 games incl. Big 12 Tournament + NCAA Austin Regional, 30-28,
   10,842 season miles). `src/data/softball.json` is the reference dataset.
+- **Football and volleyball schedules are live:** commit `c8c4f11` added
+  `src/data/football-2025.json` (12 games), `src/data/football-2026.json`
+  (13 games), `src/data/volleyball-2025.json` (28 games), and
+  `src/data/volleyball-2026-spring.json` (7 games). The editable CSV sources
+  are in `schedule-imports/`.
 - **Cinematic mode is shipped:** full-screen 3D globe season tour (react-globe.gl,
   lazy-loaded). Spec: `docs/superpowers/specs/2026-06-10-cinematic-mode-design.md`.
   Entry: gold "✦ Cinematic" button on the sport map page.
@@ -35,6 +40,9 @@ and deployment workflow. This file adds current-state context that changes more 
   pushing to main deploys to production immediately.
 - `.worktrees/` contains stale git worktree copies whose tests also run — ignore
   their results or remove the worktree.
+- Baylor's official 2026 spring football item is a practice/Fan Fest
+  announcement, not an opponent schedule suitable for the travel map. The
+  active `football-2026` dataset is the fall regular-season schedule.
 
 ## Owner
 
