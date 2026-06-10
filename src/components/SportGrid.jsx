@@ -1,11 +1,12 @@
-import { useMemo } from 'react';
+import { useMemo, useState } from 'react';
 import { sports } from '../data/index.js';
 import { groupByDest } from '../utils/groupByDest.js';
 import { calcTotalMiles } from '../utils/calcMiles.js';
 import { haversine } from '../utils/haversine.js';
 import { computeTimezoneChanges } from '../utils/timezones.js';
+import { loadImportedSports, removeImportedSport } from '../utils/importedSports.js';
 
-function SportCard({ sport, onClick }) {
+function SportCard({ sport, onClick, imported, onRemove }) {
   const isActive = !sport.status;
 
   const stats = useMemo(() => {
@@ -59,6 +60,20 @@ function SportCard({ sport, onClick }) {
               Coming Soon
             </div>
           )}
+          {imported && (
+            <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
+              <div style={{ fontSize: 10, color: '#2563eb', background: '#eff6ff', padding: '2px 8px', borderRadius: 12, border: '1px solid #bfdbfe' }}>
+                Imported
+              </div>
+              <button
+                onClick={e => { e.stopPropagation(); onRemove(); }}
+                title="Remove from this browser"
+                style={{ background: 'none', border: 'none', color: '#94a3b8', cursor: 'pointer', fontSize: 14, lineHeight: 1, padding: 2 }}
+              >
+                ✕
+              </button>
+            </div>
+          )}
         </div>
 
         {isActive && stats && (
@@ -88,7 +103,14 @@ function SportCard({ sport, onClick }) {
   );
 }
 
-export default function SportGrid({ onSelect }) {
+export default function SportGrid({ onSelect, onImport }) {
+  const [imported, setImported] = useState(loadImportedSports);
+
+  function handleRemove(sportId) {
+    removeImportedSport(sportId);
+    setImported(loadImportedSports());
+  }
+
   return (
     <div style={{ minHeight: '100vh', background: '#f1f5f9', fontFamily: 'DM Sans, sans-serif', color: '#0f172a' }}>
       {/* Header */}
@@ -107,6 +129,30 @@ export default function SportGrid({ onSelect }) {
               onClick={() => onSelect(sport)}
             />
           ))}
+          {imported.map(sport => (
+            <SportCard
+              key={`imported-${sport.sport}`}
+              sport={sport}
+              imported
+              onClick={() => onSelect(sport)}
+              onRemove={() => handleRemove(sport.sport)}
+            />
+          ))}
+          {/* Import entry card */}
+          <div
+            onClick={onImport}
+            style={{
+              border: '2px dashed #cbd5e1', borderRadius: 8, padding: 20,
+              display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center',
+              cursor: 'pointer', minHeight: 120, color: '#94a3b8', background: 'transparent',
+            }}
+            onMouseEnter={e => { e.currentTarget.style.borderColor = '#FFB81C'; e.currentTarget.style.color = '#0f172a'; }}
+            onMouseLeave={e => { e.currentTarget.style.borderColor = '#cbd5e1'; e.currentTarget.style.color = '#94a3b8'; }}
+          >
+            <div style={{ fontSize: 24, lineHeight: 1 }}>+</div>
+            <div style={{ fontSize: 13, fontWeight: 600, marginTop: 8 }}>Import Schedule</div>
+            <div style={{ fontSize: 11, marginTop: 2 }}>from CSV</div>
+          </div>
         </div>
       </div>
     </div>

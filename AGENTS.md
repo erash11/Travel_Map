@@ -14,10 +14,13 @@ and deployment workflow. This file adds current-state context that changes more 
 - **Cinematic mode is shipped:** full-screen 3D globe season tour (react-globe.gl,
   lazy-loaded). Spec: `docs/superpowers/specs/2026-06-10-cinematic-mode-design.md`.
   Entry: gold "✦ Cinematic" button on the sport map page.
-- **In progress: Schedule Import (CSV → sport JSON).**
-  Spec: `docs/superpowers/specs/2026-06-10-schedule-import-design.md` — read it in
-  full before continuing. Check `git log` for which pieces are already committed;
-  each piece lands as its own commit.
+- **Schedule Import is shipped:** "+ Import Schedule" card on the grid → CSV upload,
+  geocoding (bundled `public/us-cities.json`, regenerate via
+  `node scripts/build-cities.mjs`), validation with inline unknown-city fixes,
+  localStorage preview, Download JSON for publishing.
+  Spec: `docs/superpowers/specs/2026-06-10-schedule-import-design.md`.
+  To publish an imported sport permanently: Download JSON → `src/data/<sport>.json`
+  → add to `src/data/index.js` → push.
 
 ## Gotchas an agent needs to know
 
