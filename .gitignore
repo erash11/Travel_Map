@@ -6,3 +6,12 @@ dist
 
 .superpowers/
 .playwright-mcp/
+.env.*
+node_modules/
+.venv/
+__pycache__/
+*.pyc
+.DS_Store
+*.duckdb
+*.rds
+*.Rdata
