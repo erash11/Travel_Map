@@ -48,3 +48,8 @@ and deployment workflow. This file adds current-state context that changes more 
 
 Eric Rash (Director of Applied Performance, Baylor Athletics). He is the only
 schedule-data editor; coaches/admins only view the site.
+
+## Session routine
+- Start: run `git pull`, then read docs/STATUS.md before doing anything else.
+- End: update docs/STATUS.md (done, next, open questions), commit, and `git push`.
+- Never leave uncommitted work at the end of a session.
