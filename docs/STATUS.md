@@ -1,15 +1,10 @@
-﻿# STATUS
+# STATUS
 
-Read this first. Update it before ending every session.
-
-## Current state
-- Snapshot committed 2026-09-09 during migration to the DEV + GitHub workflow.
+## Done
+- Repo brought under git and pushed to erash11 (2026-09-09).
 
 ## Next
--
+- 
 
 ## Open questions
--
-
-## Gotchas
--
+- 
