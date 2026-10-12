@@ -19,6 +19,12 @@
 
 Read this first. Update it before ending every session.
 
+## Where everything lives
+
+| What | Where |
+|---|---|
+| Drive outputs | `~/Library/CloudStorage/GoogleDrive-eric.rash11@gmail.com/My Drive/00_Primary_Storage_Drive/01_PROJECTS/_STALLED/2026-03-10_Travel_Map` (Windows: `G:\My Drive\00_Primary_Storage_Drive\01_PROJECTS\_STALLED\2026-03-10_Travel_Map`) |
+
 ## Current state
 - Snapshot committed 2026-09-09 during migration to the DEV + GitHub workflow.
 
