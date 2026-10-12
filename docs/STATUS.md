@@ -26,6 +26,7 @@ Read this first. Update it before ending every session.
 | Drive outputs | `~/Library/CloudStorage/GoogleDrive-eric.rash11@gmail.com/My Drive/00_Primary_Storage_Drive/01_PROJECTS/_STALLED/2026-03-10_Travel_Map` (Windows: `G:\My Drive\00_Primary_Storage_Drive\01_PROJECTS\_STALLED\2026-03-10_Travel_Map`) |
 
 ## Current state
+- 2026-10-12: touched only to add a `Drive outputs` row (Option A). The board marks this project archived; status left as is for Eric to decide.
 - 2026-10-12: archived for now at Eric's request (registry). Touched today by the closeout sweep. Resume with `python3 ~/DEV/project-triage/portfolio.py set-status <name> active`.
 - 2026-10-12: docs commit pointed STATUS at the Drive outputs folder. No other work recorded today (closeout sweep).
 - Snapshot committed 2026-09-09 during migration to the DEV + GitHub workflow.
